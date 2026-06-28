@@ -137,6 +137,7 @@
     <ClInclude Include="NotificacionControl.h" />
     <ClInclude Include="PreguntaControl.h" />
     <ClInclude Include="Ranking.h" />
+    <ClInclude Include="TablaHash.h" />
     <ClInclude Include="Usuario.h" />
     <ClInclude Include="UsuarioControl.h" />
   </ItemGroup>
