@@ -46,5 +46,15 @@ public:
 	bool operator==(const Usuario& otro) const {
 		return nombre == otro.nombre;
 	}
+	bool operator<(Usuario otro) {
+		if (nombre != otro.getNombre())
+			return nombre < otro.getNombre();
+		else return experiencia < otro.getExperiencia();
+	}
+	bool operator>(Usuario otro) {
+		if (nombre != otro.getNombre())
+			return nombre > otro.getNombre();
+		else return experiencia > otro.getExperiencia();
+	}
 };
 

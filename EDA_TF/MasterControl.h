@@ -2,18 +2,21 @@
 #include <iostream>
 #include "ItemControl.h"
 #include "NotificacionControl.h"
+#include "UsuarioControl.h"
 
 class MasterControl
 {
 private:
 	ItemControl* itemControl;
 	NotificacionControl* notificacionControl;
+	UsuarioControl* usuarioControl;
 
 public:
-	MasterControl() : itemControl(new ItemControl()), notificacionControl(new NotificacionControl()){}
+	MasterControl() : itemControl(new ItemControl()), notificacionControl(new NotificacionControl()), usuarioControl(new UsuarioControl()){}
 	~MasterControl(){
 		delete itemControl;
 		delete notificacionControl;
+		delete usuarioControl;
 	}
 
 	void menu() {
@@ -28,7 +31,7 @@ public:
 			std::cout << "\n\nDigite la opcion: "; cin >> opc;
 
 			if (opc == 1) {
-				std::cout << "\ngay\n";
+				moduloUsuario();
 			}
 			else if (opc == 2) {
 				std::cout << "\nhomo\n";
@@ -50,5 +53,8 @@ public:
 	}
 	void moduloNotificacion() {
 		notificacionControl->menu();
+	}
+	void moduloUsuario() {
+		usuarioControl->menu();
 	}
 };

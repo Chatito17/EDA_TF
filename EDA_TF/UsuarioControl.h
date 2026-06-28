@@ -180,18 +180,3 @@ public:
         }
     }
 };
-
-
-
-/*void mostrarListaOrdenada() {
-        vector<Item> aux = listaAVector(lista);
-        auto comparadorPrecio = [](Item a, Item b) {
-            return a.getPrecio() < b.getPrecio();
-            };
-        heapSortMenorAMayor(aux, comparadorPrecio);
-        lista = vectorALista(aux);
-
-        std::cout << "\n== LISTA DE ITEMS ==\n";
-        lista->Print();
-        std::cout << "\n";
-    }*/
