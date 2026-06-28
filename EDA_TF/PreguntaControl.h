@@ -1,4 +1,5 @@
 #pragma once
+#include "GeneradorDataSet.h"
 #include "Lista.h"
 #include "TablaHash.h"
 struct Pregunta
