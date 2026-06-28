@@ -162,9 +162,9 @@ public:
 
 		ImprimirSubarbol(nodo->derecha, prefijo + (esDerecha ? "    " : "|   "), true, mostrarElemento);
 
-		cout << prefijo << "|---";
+		std::cout << prefijo << "|---";
 		mostrarElemento(nodo->valor);
-		cout << endl;
+		std::cout << std::endl;
 
 		ImprimirSubarbol(nodo->izquierda, prefijo + (esDerecha ? "|   " : "    "), false, mostrarElemento);
 	}
@@ -172,14 +172,14 @@ public:
 	template <typename Mostrar>
 	void ImprimirArbol(Mostrar mostrarElemento) {
 		if (raiz == nullptr) {
-			cout << "Arbol vacio\n";
+			std::cout << "Arbol vacio" << std::endl;
 			return;
 		}
 
 		ImprimirSubarbol(raiz->derecha, "", true, mostrarElemento);
 
 		mostrarElemento(raiz->valor);
-		cout << endl;
+		std::cout << std::endl;
 
 		ImprimirSubarbol(raiz->izquierda, "", false, mostrarElemento);
 	}
@@ -216,6 +216,15 @@ public:
     void Insertar(T valor) {
         raiz = Insertar(raiz, valor);
     }
+
+	NodoAVL<T>* minimo(NodoAVL<T>* nodo) {
+		NodoAVL<T>* actual = nodo ;
+
+		while (actual->izquierda != nullptr)
+			actual = actual->izquierda;
+
+		return actual;
+	}
 
 	NodoAVL<T>* minimo() {
 		if (raiz == nullptr)

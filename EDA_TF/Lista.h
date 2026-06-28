@@ -20,8 +20,8 @@ private:
 	int longitud;
 
 	NodoLista<T>* NodeAt(int pos) {
-		if (pos < || pos >= longitud) {
-			std::cout << "No existe posicion, debe ser menor al tamanio de la lista...\n";
+		if (pos < 0|| pos >= longitud) {
+			std::cout << "No existe posicion, debe ser menor al tamanio de la lista..." << std::endl;
 			return nullptr;
 		}
 
@@ -50,14 +50,14 @@ public:
 	template <typename Mostrar>
 	void imprimir(Mostrar mostrarElemento) {
 		if (estaVacio()) {
-			std::cout << "La lista enlazada esta Vacia...\n";
+			std::cout << "La lista enlazada esta Vacia..." << std::endl;
 			return;
 		}
 		NodoLista<T>* aux = cabeza;
 		while (aux != nullptr) {
 			
 			mostrarElemento(aux->valor);
-			cout << " "; //Lambda define como se imprime
+			std::cout << " || "; //Lambda define como se imprime
 			aux = aux->siguiente;
 		}
 		std::cout << std::endl;
@@ -92,7 +92,7 @@ public:
 
 	void AddLast(T valor) {
 		NodoLista<T>* node = new NodoLista<T>(valor);
-		if (IsEmpty()) {
+		if (estaVacio()) {
 			cabeza = node;
 		}
 		else {
@@ -125,7 +125,7 @@ public:
 
 	void RemoveFirst() {
 		if (estaVacio()) {
-			std::cout << "No se puede eliminar un nodo en una lista enlazada vacía\n";
+			std::cout << "No se puede eliminar un nodo en una lista enlazada vacía" << std::endl;
 			return;
 		}
 		NodoLista<T>* aux = cabeza;
@@ -136,7 +136,7 @@ public:
 
 	void RemovePos(int pos) {
 		if (estaVacio()) {
-			std::cout << "No se puede eliminar un nodo en una lista enlazada vacía\n";
+			std::cout << "No se puede eliminar un nodo en una lista enlazada vacía" << std::endl;
 			return;
 		}
 		if (pos == 0)
@@ -154,7 +154,7 @@ public:
 
 	void RemoveLast() {
 		if (estaVacio()) {
-			std::cout << "No se puede eliminar un nodo en una lista enlazada vacía\n";
+			std::cout << "No se puede eliminar un nodo en una lista enlazada vacía" << std::endl;
 			return;
 		}
 		if (longitud == 1) {
@@ -171,6 +171,19 @@ public:
 				delete nodeLast;
 				longitud--;
 			}
+		}
+	}
+
+	void eliminar(std::string nombre) {
+		NodoLista<T>* aux = cabeza;
+		int pos = 1;
+		
+		while (aux != nullptr && aux->valor.getNombre() != nombre) {
+			aux = aux->siguiente;
+			pos++;
+		}
+		if (aux != nullptr) {
+			RemovePos(pos);
 		}
 	}
 
@@ -194,7 +207,7 @@ template<typename T>
 std::vector<T> listaAVector(Lista<T>* lista) {
 	std::vector<T> vec;
 
-	if (lista == nullptr || lista->IsEmpty()) {
+	if (lista == nullptr || lista->estaVacio()) {
 		return vec;
 	}
 

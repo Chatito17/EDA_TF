@@ -7,16 +7,16 @@
 #include "Item.h"
 
 std::vector<std::string> nombresBase = {
-		"Juan", "Maria", "Carlos", "Ana", "Luis",
-		"Lucia", "Pedro", "Elena", "Jorge", "Sofia",
-		"Diego", "Laura", "Mateo", "Valentina", "Andres",
-		"Camila", "Daniel", "Fernanda", "Miguel", "Paula",
-		"Sebastian", "Gabriela", "Ricardo", "Patricia", "Alejandro",
-		"Natalia", "Fernando", "Carmen", "Alberto", "Daniela",
-		"Adrian", "Isabel", "Oscar", "Rosa", "Hector",
-		"Andrea", "Emilio", "Melissa", "Raul", "Noelia",
-		"Kevin", "Renata", "Victor", "Claudia", "Martin",
-		"Brenda", "Julio", "Fiorella", "Marco", "Angela"
+	"Juan", "Maria", "Carlos", "Ana", "Luis",
+	"Lucia", "Pedro", "Elena", "Jorge", "Sofia",
+	"Diego", "Laura", "Mateo", "Valentina", "Andres",
+	"Camila", "Daniel", "Fernanda", "Miguel", "Paula",
+	"Sebastian", "Gabriela", "Ricardo", "Patricia", "Alejandro",
+	"Natalia", "Fernando", "Carmen", "Alberto", "Daniela",
+	"Adrian", "Isabel", "Oscar", "Rosa", "Hector",
+	"Andrea", "Emilio", "Melissa", "Raul", "Noelia",
+	"Kevin", "Renata", "Victor", "Claudia", "Martin",
+	"Brenda", "Julio", "Fiorella", "Marco", "Angela"
 };
 
 std::vector<std::string> apellidosBase = {
@@ -36,7 +36,6 @@ std::vector<std::string> idiomasBase = {
 	"Ingles", "Frances", "Aleman", "Italiano", "Portugues", "Japones"
 };
 
-
 std::vector<std::string> nombresItem = {
 	"DobleEXP", "VidaExtra", "Traje", "Protector"
 };
@@ -45,7 +44,7 @@ std::vector<std::string> descripcionesItem = {
 };
 
 Usuario generarUsuarioAleatorio(int consecutivo) {
-	std::string id = "U" + to_string(1000 + consecutivo);
+	std::string id = "U" + std::to_string(1000 + consecutivo);
 	std::string nombreCompleto = nombresBase[rand() % nombresBase.size()] + " " + apellidosBase[rand() % apellidosBase.size()];
 	std::string idioma = idiomasBase[rand() % idiomasBase.size()];
 	int xp = rand() % 5000;
