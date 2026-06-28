@@ -24,15 +24,15 @@ public:
         int opc;
         do
         {
-            std::cout << std::endl << "=== MENU ===" << std::endl;
-            std::cout << "0. Generar items aleatorios." << std::endl;
-            std::cout << "1. Agregar item manualmente." << std::endl;
-            std::cout << "2. Buscar item." << std::endl;
-            std::cout << "3. Eliminar item." << std::endl;
-            std::cout << "4. Mostrar items ordenados por precio." << std::endl;
-            std::cout << "5. Mostrar arbol de items por nombre." << std::endl;
-            std::cout << "6. Regresar." << std::endl;
-            std::cout << std::endl << "Digite una opcion: "; std::cin >> opc;
+            std::cout << "\n=== MENU DE ITEMS ===";
+            std::cout << "\n0. Generar items aleatorios.";
+            std::cout << "\n1. Agregar item manualmente.";
+            std::cout << "\n2. Buscar item.";
+            std::cout << "\n3. Eliminar item.";
+            std::cout << "\n4. Mostrar items ordenados por precio.";
+            std::cout << "\n5. Mostrar arbol de items por nombre.";
+            std::cout << "\n6. Regresar.";
+            std::cout << "\n\nDigite una opcion: "; std::cin >> opc;
 
             if (opc == 0) {
                 agregarItemsAleatorios();
@@ -53,14 +53,14 @@ public:
                 mostrarArbol();
             }
             else if (opc == 6) {
-                std::cout << std::endl << "Hasta luego! :D" << std::endl;
+                std::cout <<"\nRedirigiendo...\n";
             }
 
         } while (opc != 6);
 	}
     void agregarItemsAleatorios() {
         int cantidad;
-        std::cout << std::endl << "Digite la cantidad de items a agregar: "; std::cin >> cantidad;
+        std::cout << "\nDigite la cantidad de items a agregar: "; std::cin >> cantidad;
         
         auto agregarItemRandom = [this](int n) {
             while (n--) {

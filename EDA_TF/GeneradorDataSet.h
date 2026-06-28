@@ -5,6 +5,7 @@
 
 #include "Usuario.h"
 #include "Item.h"
+#include "Notificacion.h"
 
 std::vector<std::string> nombresBase = {
 	"Juan", "Maria", "Carlos", "Ana", "Luis",
@@ -43,6 +44,13 @@ std::vector<std::string> descripcionesItem = {
 	"Duplica ganancia de exp ", "Aumenta una vida", "Protege del frio", "Protege la racha por un dia"
 };
 
+std::vector<std::string> nombresNotificacion = {
+	"Alumno Expulsado", "Actualizacion grande", "Correccion de bugs", "Nuevos features"
+};
+std::vector<std::string> descripcionesNotificacion = {
+	"Se reporto al usuario Marvans por hacker", "La nueva aplicacion de Duolingo necesitara 1 gb de almacenamiento", "Se corrigieron bugs visuales", "Ahora se pueden adquirir trajes"
+};
+
 Usuario generarUsuarioAleatorio(int consecutivo) {
 	std::string id = "U" + std::to_string(1000 + consecutivo);
 	std::string nombreCompleto = nombresBase[rand() % nombresBase.size()] + " " + apellidosBase[rand() % apellidosBase.size()];
@@ -50,6 +58,15 @@ Usuario generarUsuarioAleatorio(int consecutivo) {
 	int xp = rand() % 5000;
 	int racha = rand() % 100;
 	return Usuario(id, nombreCompleto, idioma, xp, racha);
+}
+
+Notificacion generarNotificacionAleatoria(int consecutivo) {
+	std::string id = "N" + std::to_string(1000 + consecutivo);
+	int aux = rand() % 4;
+	std::string nombre = nombresNotificacion[aux];
+	std::string descripcion = descripcionesNotificacion[aux];
+
+	return Notificacion(nombre, descripcion, id);
 }
 
 Item generarItemAleatorio() {

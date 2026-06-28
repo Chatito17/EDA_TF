@@ -4,7 +4,7 @@
 #include <ctime>
 #include <string>
 
-#include "ItemControl.h"
+#include "MasterControl.h"
 
 using namespace std;
 
@@ -12,7 +12,7 @@ int main()
 {
     srand(time(nullptr));
     
-    ItemControl* control = new ItemControl;
+    MasterControl* control = new MasterControl();
 
     control->menu();
     

@@ -174,6 +174,19 @@ public:
 		}
 	}
 
+	T buscar(std::string nombre) {
+		NodoLista<T>* temp = cabeza;
+
+		while (temp != nullptr) {
+			if (temp->valor.getNombre() == nombre) {
+				return temp->valor;
+				break;
+			}
+			temp = temp->siguiente;
+		}
+		return T();
+	}
+
 	void eliminar(std::string nombre) {
 		NodoLista<T>* aux = cabeza;
 		int pos = 1;
