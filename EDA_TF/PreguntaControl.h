@@ -3,10 +3,19 @@
 #include "TablaHash.h"
 struct Pregunta
 {
+
     string enunciado = "";
     int Dificultad = 0;
     string Respuesta = "";
+    Pregunta(string _enunciado, int diff, string rpta) : enunciado(_enunciado), Dificultad(diff), Respuesta(rpta) {}
+    string getNombre() {
+        return enunciado;
+    }
+    bool operator==(const Pregunta& otro) const {
+        return enunciado == otro.enunciado && Dificultad == otro.Dificultad;
+    }
 };
+
 class PreguntaControl
 {
 private:
@@ -34,10 +43,10 @@ public:
             std::cout << "\nDigite una opcion: "; std::cin >> opc;
 
             if (opc == 0) {
-                agregarItemsAleatorios();
+                agregarPreguntasAleatorias();
             }
             else if (opc == 1) {
-                agregarItemManual();
+                agregarPregunta();
             }
             else if (opc == 2) {
                 std::cout << "\nemm\n";
@@ -54,35 +63,36 @@ public:
 
         } while (opc != 5);
     }
-    void agregarItemsAleatorios() {
+    void agregarPreguntasAleatorias() {
         int cantidad;
-        std::cout << "\nDigite la cantidad de items a agregar: "; std::cin >> cantidad;
+        std::cout << "\nDigite la cantidad de Preguntas a agregar: "; std::cin >> cantidad;
 
-        auto agregarItemRandom = [this](int n) {
+        auto agregarPreguntaRandom = [this](int n) {
             while (n--) {
-                Item nuevo = generarItemAleatorio();
-                while (this->arbol->Buscar(nuevo.getNombre()) != Item())
+                Pregunta nuevo = generarPreguntaAleatoria();
+                while (!(listaPregunta->Buscar(nuevo.getNombre()) == nuevo))
                 {
-                    nuevo = generarItemAleatorio();
+                    nuevo = generarPreguntaAleatoria();
                 }
-                this->arbol->Insertar(nuevo);
-                this->lista->AddLast(nuevo);
+                this->tablaPregunta->insertar(nuevo);
+                this->listaPregunta->AddLast(nuevo);
             }
             };
-        agregarItemRandom(cantidad);
-        std::cout << "Items agregados correctamente\n";
+        agregarPreguntaRandom(cantidad);
+        std::cout << "Preguntas agregados correctamente\n";
     }
 
-    void agregarItemManual() {
-        std::string nombre, descripcion;
-        int precio;
+    void agregarPregunta() {
+        std::string enunciado, respuesta;
+        int diff;
         std::cin.ignore();
-        std::cout << "\n++ Nuevo Item ++\n\n";
-        std::cout << "Nombre: "; getline(std::cin, nombre);
-        std::cout << "Descripcion: "; getline(std::cin, descripcion);
-        std::cout << "Precio en gemas: "; std::cin >> precio;
+        std::cout << "\n++ Nueva Pregunta ++\n\n";
+        std::cout << "Enciado: "; getline(std::cin, enunciado);
+        std::cout << "Respuesta: "; getline(std::cin, respuesta);
+        std::cout << "Dificultad: "; std::cin >> diff;
 
-        arbol->Insertar(Item(nombre, descripcion, precio));
+        listaPregunta->AddFirst(Pregunta(enunciado, diff, respuesta ));
+        tablaPregunta->insertar(Pregunta(enunciado, diff, respuesta));
         std::cout << "Item agregado correctamente\n";
     }
     void mostrarListaOrdenada() {

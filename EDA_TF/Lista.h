@@ -188,6 +188,19 @@ public:
 		NodoLista<T>* last = NodeAt(longitud - 1);
 		return last != nullptr ? last->valor : T();
 	}
+
+	T Buscar(std::string nombre) {
+		NodoLista<T>* temp = cabeza;
+
+		while (temp != nullptr) {
+			if (temp->valor.getNombre() == nombre) {
+				return temp->valor;
+				break;
+			}
+			temp = temp->siguiente;
+		}
+		return T();
+	}
 };
 
 template<typename T>
@@ -215,4 +228,5 @@ Lista<T>* vectorALista(std::vector<T>& vec) {
 	}
 
 	return lista;
+
 }
