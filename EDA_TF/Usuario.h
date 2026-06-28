@@ -1,19 +1,18 @@
 #pragma once
 #include <iostream>
 #include <string>
-using namespace std;
 
 class Usuario {
 private:
-	string id;
-	string nombre;
-	string idioma;
+	std::string id;
+	std::string nombre;
+	std::string idioma;
 	int experiencia;
 	int racha;
 
 public:
 	Usuario() {}
-	Usuario(string id, string nombre, string idioma, int experiencia, int racha) {
+	Usuario(std::string id, std::string nombre, std::string idioma, int experiencia, int racha) {
 		this->id = id;
 		this->nombre = nombre;
 		this->idioma = idioma;
@@ -21,13 +20,13 @@ public:
 		this->racha = racha;
 	}
 
-	string getID() const {
+	std::string getID() const {
 		return id;
 	}
-	string getNombre() const {
+	std::string getNombre() const {
 		return nombre;
 	}
-	string getIdioma() const {
+	std::string getIdioma() const {
 		return idioma;
 	}
 	int getExperiencia() const {
@@ -37,7 +36,7 @@ public:
 		return racha;
 	}
 	void setExperiencia(int xp) {
-		this->experiencia = xp;
+		experiencia = xp;
 	}
 	void setRacha(int racha) {
 		this->racha = racha;

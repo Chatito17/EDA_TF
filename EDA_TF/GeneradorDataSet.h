@@ -44,8 +44,9 @@ std::vector<std::string> descripcionesItem = {
 	"Duplica ganancia de exp ", "Aumenta una vida", "Protege del frio", "Protege la racha por un dia"
 };
 
+					
 Usuario generarUsuarioAleatorio(int consecutivo) {
-	std::string id = "U" + to_string(1000 + consecutivo);
+	std::string id = "U" + std::to_string(1000 + consecutivo);
 	std::string nombreCompleto = nombresBase[rand() % nombresBase.size()] + " " + apellidosBase[rand() % apellidosBase.size()];
 	std::string idioma = idiomasBase[rand() % idiomasBase.size()];
 	int xp = rand() % 5000;

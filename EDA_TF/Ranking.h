@@ -21,6 +21,7 @@ public:
 		}
 
 		//Lista enlazada nueva con usuarios ya ordenados
-		listaUsuarios = vectorALista(tempVector);
+		//listaUsuarios = vectorALista(tempVector);
+		//void ordenarRankingPorXP(Lista<Usuario>*listaUsuarios)
 	}
 };

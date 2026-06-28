@@ -6,7 +6,7 @@ void merge(std::vector<T>& A, int left, int mid, int right, Comparador comparar)
 	int n1 = mid - left + 1;
 	int n2 = right - mid;
 
-	vector<T> L(n1), R(n2);
+	std::vector<T> L(n1), R(n2);
 
 	for (int i = 0; i < n1; i++)
 		L[i] = A[left + i];

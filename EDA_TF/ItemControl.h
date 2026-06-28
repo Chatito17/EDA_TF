@@ -40,7 +40,7 @@ public:
                 agregarItemManual();
             }
             else if (opc == 2) {
-                std::cout << "\nemm\n"; 
+                std::cout << "\nemm\n";
             }
             else if (opc == 3) {
                 mostrarListaOrdenada();

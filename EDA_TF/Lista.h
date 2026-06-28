@@ -20,7 +20,7 @@ private:
 	int longitud;
 
 	NodoLista<T>* NodeAt(int pos) {
-		if (pos < || pos >= longitud) {
+		if (pos < 0 || pos >= longitud) {
 			std::cout << "No existe posicion, debe ser menor al tamanio de la lista...\n";
 			return nullptr;
 		}
@@ -57,7 +57,7 @@ public:
 		while (aux != nullptr) {
 			
 			mostrarElemento(aux->valor);
-			cout << " "; //Lambda define como se imprime
+			std::cout << " "; //Lambda define como se imprime
 			aux = aux->siguiente;
 		}
 		std::cout << std::endl;
@@ -92,7 +92,7 @@ public:
 
 	void AddLast(T valor) {
 		NodoLista<T>* node = new NodoLista<T>(valor);
-		if (IsEmpty()) {
+		if (estaVacio()) {
 			cabeza = node;
 		}
 		else {
@@ -176,7 +176,7 @@ public:
 
 	T GetFirst() {
 		NodoLista<T>* first = NodeAt(0);
-		return first;
+		return first != nullptr ? first->valor : T();
 	}
 
 	T GetPos(int pos) {
@@ -194,7 +194,7 @@ template<typename T>
 std::vector<T> listaAVector(Lista<T>* lista) {
 	std::vector<T> vec;
 
-	if (lista == nullptr || lista->IsEmpty()) {
+	if (lista == nullptr || lista->estaVacio()) {
 		return vec;
 	}
 
