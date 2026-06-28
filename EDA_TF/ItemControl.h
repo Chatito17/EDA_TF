@@ -24,14 +24,15 @@ public:
         int opc;
         do
         {
-            std::cout << "\n=== MENU ===\n";
-            std::cout << "0. Agregar items aleatorios.\n";
-            std::cout << "1. Agregar item manualmente.\n";
-            std::cout << "2. Buscar item.\n";
-            std::cout << "3. Mostrar items ordenados por precio.\n";
-            std::cout << "4. Mostrar arbol de items por nombre.\n";
-            std::cout << "5. Regresar.\n";
-            std::cout << "\nDigite una opcion: "; std::cin >> opc;
+            std::cout << "\n=== MENU DE ITEMS ===";
+            std::cout << "\n0. Generar items aleatorios.";
+            std::cout << "\n1. Agregar item manualmente.";
+            std::cout << "\n2. Buscar item.";
+            std::cout << "\n3. Eliminar item.";
+            std::cout << "\n4. Mostrar items ordenados por precio.";
+            std::cout << "\n5. Mostrar arbol de items por nombre.";
+            std::cout << "\n6. Regresar.";
+            std::cout << "\n\nDigite una opcion: "; std::cin >> opc;
 
             if (opc == 0) {
                 agregarItemsAleatorios();
@@ -40,19 +41,22 @@ public:
                 agregarItemManual();
             }
             else if (opc == 2) {
-                std::cout << "\nemm\n"; 
+                buscarItem();
             }
             else if (opc == 3) {
-                mostrarListaOrdenada();
+                eliminarItem();
             }
             else if (opc == 4) {
-                mostrarArbol();
+                mostrarListaOrdenada();
             }
             else if (opc == 5) {
-                std::cout << "\nHasta luego! :D\n";
+                mostrarArbol();
+            }
+            else if (opc == 6) {
+                std::cout <<"\nRedirigiendo...\n";
             }
 
-        } while (opc != 5);
+        } while (opc != 6);
 	}
     void agregarItemsAleatorios() {
         int cantidad;
@@ -70,43 +74,89 @@ public:
             }
         };
         agregarItemRandom(cantidad);
-        std::cout << "Items agregados correctamente\n";
+        std::cout << "Items agregados correctamente" << std::endl;
     }
 	
     void agregarItemManual() {
         std::string nombre, descripcion;
         int precio;
         std::cin.ignore();
-        std::cout << "\n++ Nuevo Item ++\n\n";
+        std::cout << std::endl << "++ Nuevo Item ++" << std::endl << std::endl;
         std::cout << "Nombre: "; getline(std::cin, nombre);
         std::cout << "Descripcion: "; getline(std::cin, descripcion);
         std::cout << "Precio en gemas: "; std::cin >> precio;
 
         arbol->Insertar(Item(nombre, descripcion, precio));
-        std::cout << "Item agregado correctamente\n";
+        lista->AddLast(Item(nombre, descripcion, precio));
+        std::cout << "Item agregado correctamente" << std::endl;
+    }
+    void eliminarItem() {
+        std::string nombre;
+        std::cin.ignore();
+        std::cout << std::endl << "Digite el nombre del item: "; std::getline(std::cin, nombre);
+        Item busca = this->arbol->Buscar(nombre);
+        if (busca == Item()) {
+            std::cout << "Item no he encontrado :c" << std::endl;
+            return;
+        }
+        std::cout << "Item encontrado" << std::endl;
+        std::cout << "== Datos de Item ==" << std::endl;
+        std::cout << "Nombre: " << busca.getNombre() << std::endl;
+        std::cout << "Descripcion: " << busca.getDescripcion() << std::endl;
+        std::cout << "Precio: " << busca.getPrecio() << std::endl;
+
+        char opc;
+        do{
+            std::cout << std::endl << "Esta seguro de eliminar el Item? (Y/N): "; std::cin >> opc;
+            opc = toupper(opc);
+        } while (!(opc == 'Y' || opc == 'N'));
+
+        if (opc == 'Y') {
+            arbol->Eliminar(busca.getNombre());
+            lista->eliminar(busca.getNombre());
+            std::cout << std::endl << "Se borro satisfactoriamente :D" << std::endl;
+        }
+        else {
+            std::cout << std::endl << "No se hizo algun cambio" << std::endl;
+        }
+    }
+    void buscarItem() {
+        std::string nombre;
+        std::cin.ignore();
+        std::cout << std::endl << "Digite el nombre del item: "; std::getline(cin, nombre);
+        Item busca = this->arbol->Buscar(nombre);
+        if (busca == Item()) {
+            std::cout << "Item no he encontrado :c" << std::endl;
+            return;
+        }
+        std::cout << "Item encontrado" << std::endl;
+        std::cout << "== Datos de Item ==" << std::endl;
+        std::cout << "Nombre: " << busca.getNombre() << std::endl;
+        std::cout << "Descripcion: " << busca.getDescripcion() << std::endl;
+        std::cout << "Precio: " << busca.getPrecio() << std::endl;
     }
     void mostrarListaOrdenada() {
-        vector<Item> aux = listaAVector(lista);
+        std::vector<Item> aux = listaAVector(lista);
         auto comparadorPrecio = [](Item a, Item b) {
             return a.getPrecio() < b.getPrecio();
             };
         heapSortMenorAMayor(aux, comparadorPrecio);
         lista = vectorALista(aux);
 
-        std::cout << "\n== LISTA DE ITEMS ==\n";
+        std::cout << std::endl << "== LISTA DE ITEMS =="<< std::endl;
         auto imprimirItem = [](Item item) {
-            cout << item.getNombre() << " " << item.getDescripcion() << " " << item.getPrecio();
+            std::cout << item.getNombre() << " " << item.getDescripcion() << " " << item.getPrecio();
             };
         lista->imprimir(imprimirItem);
-        std::cout << "\n";
+        std::cout << std::endl;
     }
 
     void mostrarArbol() {
-        std::cout << "\n== ARBOL DE ITEMS ==\n";
+        std::cout << std::endl << "== ARBOL DE ITEMS ==" << std::endl;
         auto imprimirItem = [](Item item) {
-            cout << item.getNombre() << " " << item.getDescripcion() << " " << item.getPrecio();
+            std::cout << item.getNombre() << " " << item.getDescripcion() << " " << item.getPrecio();
             };
         arbol->ImprimirArbol(imprimirItem);
-        std::cout << "\n";
+        std::cout << std::endl;
     }
 };

@@ -5,18 +5,19 @@
 
 #include "Usuario.h"
 #include "Item.h"
+#include "Notificacion.h"
 
 std::vector<std::string> nombresBase = {
-		"Juan", "Maria", "Carlos", "Ana", "Luis",
-		"Lucia", "Pedro", "Elena", "Jorge", "Sofia",
-		"Diego", "Laura", "Mateo", "Valentina", "Andres",
-		"Camila", "Daniel", "Fernanda", "Miguel", "Paula",
-		"Sebastian", "Gabriela", "Ricardo", "Patricia", "Alejandro",
-		"Natalia", "Fernando", "Carmen", "Alberto", "Daniela",
-		"Adrian", "Isabel", "Oscar", "Rosa", "Hector",
-		"Andrea", "Emilio", "Melissa", "Raul", "Noelia",
-		"Kevin", "Renata", "Victor", "Claudia", "Martin",
-		"Brenda", "Julio", "Fiorella", "Marco", "Angela"
+	"Juan", "Maria", "Carlos", "Ana", "Luis",
+	"Lucia", "Pedro", "Elena", "Jorge", "Sofia",
+	"Diego", "Laura", "Mateo", "Valentina", "Andres",
+	"Camila", "Daniel", "Fernanda", "Miguel", "Paula",
+	"Sebastian", "Gabriela", "Ricardo", "Patricia", "Alejandro",
+	"Natalia", "Fernando", "Carmen", "Alberto", "Daniela",
+	"Adrian", "Isabel", "Oscar", "Rosa", "Hector",
+	"Andrea", "Emilio", "Melissa", "Raul", "Noelia",
+	"Kevin", "Renata", "Victor", "Claudia", "Martin",
+	"Brenda", "Julio", "Fiorella", "Marco", "Angela"
 };
 
 std::vector<std::string> apellidosBase = {
@@ -36,7 +37,6 @@ std::vector<std::string> idiomasBase = {
 	"Ingles", "Frances", "Aleman", "Italiano", "Portugues", "Japones"
 };
 
-
 std::vector<std::string> nombresItem = {
 	"DobleEXP", "VidaExtra", "Traje", "Protector"
 };
@@ -44,13 +44,29 @@ std::vector<std::string> descripcionesItem = {
 	"Duplica ganancia de exp ", "Aumenta una vida", "Protege del frio", "Protege la racha por un dia"
 };
 
+std::vector<std::string> nombresNotificacion = {
+	"Alumno Expulsado", "Actualizacion grande", "Correccion de bugs", "Nuevos features"
+};
+std::vector<std::string> descripcionesNotificacion = {
+	"Se reporto al usuario Marvans por hacker", "La nueva aplicacion de Duolingo necesitara 1 gb de almacenamiento", "Se corrigieron bugs visuales", "Ahora se pueden adquirir trajes"
+};
+
 Usuario generarUsuarioAleatorio(int consecutivo) {
-	std::string id = "U" + to_string(1000 + consecutivo);
+	std::string id = "U" + std::to_string(1000 + consecutivo);
 	std::string nombreCompleto = nombresBase[rand() % nombresBase.size()] + " " + apellidosBase[rand() % apellidosBase.size()];
 	std::string idioma = idiomasBase[rand() % idiomasBase.size()];
 	int xp = rand() % 5000;
 	int racha = rand() % 100;
 	return Usuario(id, nombreCompleto, idioma, xp, racha);
+}
+
+Notificacion generarNotificacionAleatoria(int consecutivo) {
+	std::string id = "N" + std::to_string(1000 + consecutivo);
+	int aux = rand() % 4;
+	std::string nombre = nombresNotificacion[aux];
+	std::string descripcion = descripcionesNotificacion[aux];
+
+	return Notificacion(nombre, descripcion, id);
 }
 
 Item generarItemAleatorio() {

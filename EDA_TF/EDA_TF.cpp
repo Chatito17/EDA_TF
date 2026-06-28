@@ -4,15 +4,15 @@
 #include <ctime>
 #include <string>
 
-#include "ItemControl.h"
-#include "UsuarioControl.h"
+#include "MasterControl.h"
+
 using namespace std;
 
 int main()
 {
     srand(time(nullptr));
-    UsuarioControl* control = new UsuarioControl;
-    //ItemControl* control = new ItemControl;
+    
+    MasterControl* control = new MasterControl();
 
     control->menu();
     

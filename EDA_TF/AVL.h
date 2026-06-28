@@ -218,6 +218,15 @@ public:
         raiz = Insertar(raiz, valor);
     }
 
+	NodoAVL<T>* minimo(NodoAVL<T>* nodo) {
+		NodoAVL<T>* actual = nodo ;
+
+		while (actual->izquierda != nullptr)
+			actual = actual->izquierda;
+
+		return actual;
+	}
+
 	NodoAVL<T>* minimo() {
 		if (raiz == nullptr)
 			return nullptr;

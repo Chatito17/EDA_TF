@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include <cstdlib>
 
 class Item {
@@ -44,6 +45,10 @@ public:
 
     bool operator==(const Item& otro) const {
         return nombre == otro.nombre && precio == otro.precio;
+    }
+
+    bool operator!=(const Item& otro) const {
+        return !(nombre == otro.nombre && precio == otro.precio);
     }
 };
 
