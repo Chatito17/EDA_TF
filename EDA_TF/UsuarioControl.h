@@ -29,9 +29,10 @@ public:
             std::cout << "0. Agregar items aleatorios.\n";
             std::cout << "1. Agregar item manualmente.\n";
             std::cout << "2. Buscar item.\n";
-            std::cout << "3. Mostrar items ordenados por precio.\n";
-            std::cout << "4. Mostrar arbol de items por nombre.\n";
-            std::cout << "5. Regresar.\n";
+            std::cout << "3. Eliminar item por nombre.\n";
+            std::cout << "4. Mostrar items ordenados por precio.\n";
+            std::cout << "5. Mostrar arbol de items por nombre.\n";
+            std::cout << "6. Regresar.\n";
             std::cout << "\nDigite una opcion: "; std::cin >> opc;
 
             if (opc == 0) {
@@ -44,12 +45,17 @@ public:
                 std::cout << "\nemm\n";
             }
             else if (opc == 3) {
-                mostrarListaOrdenada();
+                std::string nombre;
+                std::cout << "Digite el nombre del item: "; std::getline(cin, nombre);
+                
             }
             else if (opc == 4) {
-                mostrarArbol();
+                mostrarListaOrdenada();
             }
             else if (opc == 5) {
+                mostrarArbol();
+            }
+            else if (opc == 6) {
                 std::cout << "\nHasta luego! :D\n";
             }
 

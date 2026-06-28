@@ -5,6 +5,7 @@
 #include "Item.h"
 #include "Lista.h"
 #include "HeapSort.h"
+#include "GeneradorDataSet.h"
 
 class ItemControl
 {
@@ -59,14 +60,15 @@ public:
         
         auto agregarItemRandom = [this](int n) {
             while (n--) {
-                Item nuevo = generarItemRandom();
-                while (this->arbol->Buscar(nuevo) != nullptr) {
-                    nuevo = generarItemRandom();
+                Item nuevo = generarItemAleatorio();
+                while (this->arbol->Buscar(nuevo.getNombre()) != Item())
+                {
+                    nuevo = generarItemAleatorio();
                 }
                 this->arbol->Insertar(nuevo);
                 this->lista->AddLast(nuevo);
             }
-            };
+        };
         agregarItemRandom(cantidad);
         std::cout << "Items agregados correctamente\n";
     }
@@ -92,13 +94,19 @@ public:
         lista = vectorALista(aux);
 
         std::cout << "\n== LISTA DE ITEMS ==\n";
-        lista->Print();
+        auto imprimirItem = [](Item item) {
+            cout << item.getNombre() << " " << item.getDescripcion() << " " << item.getPrecio();
+            };
+        lista->imprimir(imprimirItem);
         std::cout << "\n";
     }
 
     void mostrarArbol() {
         std::cout << "\n== ARBOL DE ITEMS ==\n";
-        arbol->ImprimirArbol();
+        auto imprimirItem = [](Item item) {
+            cout << item.getNombre() << " " << item.getDescripcion() << " " << item.getPrecio();
+            };
+        arbol->ImprimirArbol(imprimirItem);
         std::cout << "\n";
     }
 };

@@ -132,7 +132,10 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemControl.h" />
     <ClInclude Include="Lista.h" />
+    <ClInclude Include="MasterControl.h" />
     <ClInclude Include="MergeSort.h" />
+    <ClInclude Include="NotificacionControl.h" />
+    <ClInclude Include="PreguntaControl.h" />
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="Usuario.h" />
     <ClInclude Include="UsuarioControl.h" />
