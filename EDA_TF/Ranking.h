@@ -20,7 +20,14 @@ public:
 			mergeSort(tempVector, 0, tempVector.size() - 1, criterioXP);
 		}
 
-		//Lista enlazada nueva con usuarios ya ordenados
-		listaUsuarios = vectorALista(tempVector);
+		//listaUsuarios = vectorALista(tempVector);
+		//Reconstruir la lista enlazada con los usuarios ordenados
+		while (!listaUsuarios->estaVacio()) {
+			listaUsuarios->RemoveFirst();
+		}
+
+		for (const Usuario& usuario : tempVector) {
+			listaUsuarios->AddLast(usuario);
+		}
 	}
 };

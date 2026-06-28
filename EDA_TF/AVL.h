@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 
 template<typename T>
 class NodoAVL {
@@ -162,9 +163,9 @@ public:
 
 		ImprimirSubarbol(nodo->derecha, prefijo + (esDerecha ? "    " : "|   "), true, mostrarElemento);
 
-		cout << prefijo << "|---";
+		std::cout << prefijo << "|---";
 		mostrarElemento(nodo->valor);
-		cout << endl;
+		std::cout << "/n";
 
 		ImprimirSubarbol(nodo->izquierda, prefijo + (esDerecha ? "|   " : "    "), false, mostrarElemento);
 	}
@@ -172,14 +173,14 @@ public:
 	template <typename Mostrar>
 	void ImprimirArbol(Mostrar mostrarElemento) {
 		if (raiz == nullptr) {
-			cout << "Arbol vacio\n";
+			std::cout << "Arbol vacio\n";
 			return;
 		}
 
 		ImprimirSubarbol(raiz->derecha, "", true, mostrarElemento);
 
 		mostrarElemento(raiz->valor);
-		cout << endl;
+		std::cout << "\n";
 
 		ImprimirSubarbol(raiz->izquierda, "", false, mostrarElemento);
 	}

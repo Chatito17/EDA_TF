@@ -206,6 +206,9 @@ std::vector<T> listaAVector(Lista<T>* lista) {
 	return vec;
 }
 
+//Antes servía porque reconstruían una lista nueva
+//pero ahora lo que realmente necesitas es mantener 
+//la misma lista que ya usa todo el programa.
 template<typename T>
 Lista<T>* vectorALista(std::vector<T>& vec) {
 	Lista<T>* lista = new Lista<T>();

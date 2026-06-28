@@ -5,14 +5,14 @@
 #include <string>
 
 #include "ItemControl.h"
-
+#include "UsuarioControl.h"
 using namespace std;
 
 int main()
 {
     srand(time(nullptr));
-    
-    ItemControl* control = new ItemControl;
+    UsuarioControl* control = new UsuarioControl;
+    //ItemControl* control = new ItemControl;
 
     control->menu();
     

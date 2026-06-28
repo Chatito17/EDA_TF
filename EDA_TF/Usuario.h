@@ -42,5 +42,9 @@ public:
 	void setRacha(int racha) {
 		this->racha = racha;
 	}
+
+	bool operator==(const Usuario& otro) const {
+		return nombre == otro.nombre;
+	}
 };
 
