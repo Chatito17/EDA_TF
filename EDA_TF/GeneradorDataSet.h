@@ -2,10 +2,11 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "PreguntaControl.h"
+
 #include "Usuario.h"
 #include "Item.h"
 #include "Notificacion.h"
+#include "Pregunta.h"
 
 std::vector<std::string> nombresBase = {
 	"Juan", "Maria", "Carlos", "Ana", "Luis",

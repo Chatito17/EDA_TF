@@ -2,20 +2,6 @@
 #include "GeneradorDataSet.h"
 #include "Lista.h"
 #include "TablaHash.h"
-struct Pregunta
-{
-
-    string enunciado = "";
-    int Dificultad = 0;
-    string Respuesta = "";
-    Pregunta(string _enunciado, int diff, string rpta) : enunciado(_enunciado), Dificultad(diff), Respuesta(rpta) {}
-    string getNombre() {
-        return enunciado;
-    }
-    bool operator==(const Pregunta& otro) const {
-        return enunciado == otro.enunciado && Dificultad == otro.Dificultad;
-    }
-};
 
 class PreguntaControl
 {

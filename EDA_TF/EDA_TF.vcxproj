@@ -137,6 +137,7 @@
     <ClInclude Include="Notificacion.h" />
     <ClInclude Include="NotificacionControl.h" />
     <ClInclude Include="Pila.h" />
+    <ClInclude Include="Pregunta.h" />
     <ClInclude Include="PreguntaControl.h" />
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="TablaHash.h" />
