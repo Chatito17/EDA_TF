@@ -27,10 +27,10 @@ public:
         delete[] tabla;
     }
 
-    void insertar(const T& p) {
-        int idx = hash(p.enunciado);
-        tabla[idx].AddFirst(p);
-        cout << "  [guardado] " << p.enunciado
+    void insertar(T p) {
+        int idx = hash(p.getNombre());
+        tabla[idx].AddLast(p);
+        cout << "  [guardado] " << p.getNombre()
             << " en tabla[" << idx << "]\n";
     }
 
@@ -44,12 +44,13 @@ public:
         return tabla[idx].eliminar(nombre);
     }
 
-    void imprimir() {
+    template<typename Mostrar>
+    void imprimir(Mostrar mostrarElemento) {
         cout << "\n--- Agenda ---\n";
         for (int i = 0; i < tam; i++) {
-            if (!tabla[i].cabeza) continue;
+            if (tabla[i].estaVacio()) continue;
             cout << "tabla[" << i << "]: ";
-            tabla[i].imprimir();
+            tabla[i].imprimir(mostrarElemento);
             cout << "\n";
         }
         cout << "--------------\n";

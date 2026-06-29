@@ -85,14 +85,14 @@ public:
     void mostrarListaOrdenada() {
         vector<Pregunta> aux = listaAVector(listaPregunta);
         auto comparadorDificultad = [](Pregunta a, Pregunta b) {
-            return a.Dificultad < b.Dificultad;
+            return a.getDificultad() < b.getDificultad();
             };
         heapSortMenorAMayor(aux, comparadorDificultad);
         listaPregunta = vectorALista(aux);
 
         std::cout << "\n== LISTA DE ITEMS ==\n";
         auto imprimirPregunta = [](Pregunta pregunta) {
-            cout << pregunta.enunciado << " " << pregunta.Dificultad << " " << pregunta.Respuesta;
+            cout << pregunta.getNombre() << " " << pregunta.getDificultad() << " " << pregunta.getRespuesta();
             };
         listaPregunta->imprimir(imprimirPregunta);
         std::cout << "\n";
@@ -100,10 +100,10 @@ public:
 
     void mostrarTabla() {
         std::cout << "\n== TABLA DE PREGUNTAS==\n";
-        auto imprimirItem = [](Pregunta pregunta) {
-            cout << pregunta.enunciado << " " << pregunta.Dificultad << " " << pregunta.Respuesta;
+        auto imprimirPregunta = [](Pregunta pregunta) {
+            cout << pregunta.getNombre() << " " << pregunta.getDificultad() << " " << pregunta.getRespuesta();
             };
-        tablaPregunta->imprimir();
+        tablaPregunta->imprimir(imprimirPregunta);
         std::cout << "\n";
     }
 };

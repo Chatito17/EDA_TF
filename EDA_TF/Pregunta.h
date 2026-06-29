@@ -2,17 +2,19 @@
 class Pregunta
 {
 private:
-    string enunciado = "";
+    std::string enunciado = "";
     int Dificultad = 0;
-    string Respuesta = "";
+    std::string Respuesta = "";
 
 public:
     Pregunta(){}
-    Pregunta(string _enunciado, int diff, string rpta) : enunciado(_enunciado), Dificultad(diff), Respuesta(rpta) {}
-    string getNombre() {
+    Pregunta(std::string _enunciado, int diff, std::string rpta) : enunciado(_enunciado), Dificultad(diff), Respuesta(rpta) {}
+    std::string getNombre() {
         return enunciado;
     }
     bool operator==(const Pregunta& otro) const {
         return enunciado == otro.enunciado && Dificultad == otro.Dificultad;
     }
+    std::string getRespuesta() { return Respuesta; }
+    int getDificultad() { return Dificultad; }
 };

@@ -3,6 +3,7 @@
 #include "ItemControl.h"
 #include "NotificacionControl.h"
 #include "UsuarioControl.h"
+#include "PreguntaControl.h"
 
 class MasterControl
 {
@@ -10,13 +11,15 @@ private:
 	ItemControl* itemControl;
 	NotificacionControl* notificacionControl;
 	UsuarioControl* usuarioControl;
+	PreguntaControl* preguntaControl;
 
 public:
-	MasterControl() : itemControl(new ItemControl()), notificacionControl(new NotificacionControl()), usuarioControl(new UsuarioControl()){}
+	MasterControl() : itemControl(new ItemControl()), notificacionControl(new NotificacionControl()), usuarioControl(new UsuarioControl()), preguntaControl(new PreguntaControl()) {}
 	~MasterControl(){
 		delete itemControl;
 		delete notificacionControl;
 		delete usuarioControl;
+		delete preguntaControl;
 	}
 
 	void menu() {
@@ -34,7 +37,7 @@ public:
 				moduloUsuario();
 			}
 			else if (opc == 2) {
-				std::cout << "\nhomo\n";
+				moduloPregunta();
 			}
 			else if (opc == 3) {
 				moduloItem();
@@ -56,5 +59,8 @@ public:
 	}
 	void moduloUsuario() {
 		usuarioControl->menu();
+	}
+	void moduloPregunta() {
+		preguntaControl->menu();
 	}
 };
